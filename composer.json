@@ -1,0 +1,62 @@
+{
+    "name": "serafim/open-ray",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "ext-ffi": "*",
+        "clue/socket-raw": "^1.6",
+        "symfony/var-dumper": "^7.2",
+        "boson-php/runtime": "^0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Serafim\\OpenRay\\": "src"
+        }
+    },
+    "require-dev": {
+        "ffi/var-dumper": "^1.0",
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/phpunit": "^12.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Serafim\\OpenRay\\Tests\\": "tests"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-mbstring": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev",
+            "dev-main": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "platform-check": false,
+        "bin-compat": "full",
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        }
+    },
+    "scripts-aliases": {
+        "linter:check": ["linter", "phpstan", "stan"],
+        "phpcs:check": ["phpcs", "cs", "psr", "per"]
+    },
+    "scripts": {
+        "test": ["@test:unit", "@test:functional"],
+        "test:unit": "phpunit --testdox --testsuite=unit",
+        "test:functional": "phpunit --testsuite=functional",
+        "linter:check": "phpstan analyse --configuration phpstan.neon",
+        "linter:baseline": "@linter:check --generate-baseline",
+        "phpcs:check": "@phpcs:fix --dry-run",
+        "phpcs:fix": "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --verbose --diff"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

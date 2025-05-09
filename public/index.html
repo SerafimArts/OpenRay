@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=800, height=600, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/dist/main.css" />
+    <script src="/dist/main.js"></script>
+</head>
+<body style="transform: scale(.1); opacity: 0;">
+    <div class="window-resize-edge window-resize-top" data-webview-resize="t"></div>
+    <div class="window-resize-edge window-resize-bottom" data-webview-resize="b"></div>
+    <div class="window-resize-edge window-resize-right" data-webview-resize="r"></div>
+    <div class="window-resize-edge window-resize-left" data-webview-resize="l"></div>
+
+    <div class="window-resize-corner window-resize-top-left" data-webview-resize="tl"></div>
+    <div class="window-resize-corner window-resize-top-right" data-webview-resize="tr"></div>
+    <div class="window-resize-corner window-resize-bottom-right" data-webview-resize="br"></div>
+    <div class="window-resize-corner window-resize-bottom-left" data-webview-resize="bl"></div>
+
+    <main>
+        <header class="header">
+            <section class="header-layout"
+                     ondblclick="window.maximize()"
+                     onmousedown="window.drag()">
+                OpenRay
+            </section>
+            <aside class="header-buttons">
+                <!--<button class="header-button-settings"
+                        title="Settings">
+                    <span>&nbsp;</span>
+                </button>-->
+                <button class="header-button-minimize"
+                        title="Minimize"
+                        onclick="window.minimize()">
+                    <span>&nbsp;</span>
+                </button>
+                <button class="header-button-maximize"
+                        title="Maximize"
+                        data-button-id="maximize"
+                        onclick="window.maximize()">
+                    <span>&nbsp;</span>
+                </button>
+                <button class="header-button-restore"
+                        title="Restore"
+                        data-button-id="restore"
+                        style="display: none"
+                        onclick="window.restore()">
+                    <span>&nbsp;</span>
+                </button>
+                <button class="header-button-close"
+                        title="Close"
+                        onclick="close_with_animation()">
+                    <span>&nbsp;</span>
+                </button>
+            </aside>
+        </header>
+        <section class="content">
+            <article class="content-inner" id="content">
+                <div class="content-inner-info">
+                    <span class="content-inner-info-listen">
+                        listen <code>tcp://127.0.0.1:9912</code>
+                    </span>
+                    <span class="content-inner-info-code">
+                        <span class="content-inner-info-code-lang">.env</span>
+                        <code>VAR_DUMPER_FORMAT=server</code>
+                    </span>
+                    <span style="font-style: italic">or</span>
+                    <span class="content-inner-info-code">
+                        <span class="content-inner-info-code-lang">.php</span>
+                        <code>$_SERVER['VAR_DUMPER_FORMAT'] = 'server';</code>
+                    </span>
+                </div>
+            </article>
+            <div class="version">v0.1.0</div>
+        </section>
+    </main>
+    <script>
+        setTimeout(function () {
+            document.body.removeAttribute('style');
+        }, 100);
+        function close_with_animation() {
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'scale(.1)';
+            setTimeout(function () {
+                window.close();
+            }, 500);
+        }
+    </script>
+</body>
+</html>

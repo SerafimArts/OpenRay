@@ -1,0 +1,31 @@
+{
+    "check-requirements": false,
+    "dump-autoload": false,
+    "stub": "entrypoint.php",
+    "output": "app.phar",
+    "main": false,
+    "compression": "GZ",
+    "finder": [
+        {
+            "name": [
+                "*.php",
+                "*.js",
+                "*.css",
+                "*.woff2",
+                "*.html",
+                "*.svg"
+            ],
+            "exclude": [
+                "Test",
+                "test",
+                "Tests",
+                "tests"
+            ],
+            "in": [
+                "src",
+                "public",
+                "vendor"
+            ]
+        }
+    ]
+}
